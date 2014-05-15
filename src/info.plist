@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.ellislab.alfred.eese</string>
+	<key>connections</key>
+	<dict>
+		<key>F215B0CF-224A-4105-8540-EE8BA8D14096</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>018D0DAC-5A9E-4A4E-BF76-E65D70ED5534</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>EllisLab, Inc.</string>
+	<key>description</key>
+	<string>ExpressionEngine StackExchange Search</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>EESE</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>plusspaces</key>
+				<false/>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>018D0DAC-5A9E-4A4E-BF76-E65D70ED5534</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>eese</string>
+				<key>runningsubtext</key>
+				<string>Please Wait...</string>
+				<key>script</key>
+				<string>require_once('workflows.php');
+$wf = new Workflows();
+
+$query = &lt;&lt;&lt;EOTTFORME
+{query}
+EOTTFORME;
+
+$url = 'https://api.stackexchange.com/2.1/search/advanced?order=desc&amp;sort=votes&amp;site=expressionengine&amp;q='.urlencode(trim($query));
+
+$json = $wf-&gt;request($url, array(CURLOPT_ENCODING =&gt; TRUE));
+
+$json = json_decode($json);
+
+foreach($json-&gt;items as $item)
+{
+	$wf-&gt;result($item-&gt;question_id, $item-&gt;link, $item-&gt;title, "Score: {$item-&gt;score} | Answers: {$item-&gt;answer_count} | Views: {$item-&gt;view_count}", 'icon.png');
+}
+
+if (count($wf-&gt;results()) == 0)
+{
+	$wf-&gt;result('googlesuggest', $query, 'No Questions', 'No questions found. Search Google for '.$query, 'icon.png');
+}
+
+echo $wf-&gt;toxml();</string>
+				<key>title</key>
+				<string>EESE</string>
+				<key>type</key>
+				<integer>1</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>F215B0CF-224A-4105-8540-EE8BA8D14096</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>018D0DAC-5A9E-4A4E-BF76-E65D70ED5534</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>F215B0CF-224A-4105-8540-EE8BA8D14096</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>http://ellislab.com/</string>
+</dict>
+</plist>
