@@ -2,7 +2,7 @@
 
 This Alfred 2 workflow searches [ExpressionEngine Answers](http://expressionengine.stackexchange.com) at StackExchange, giving you fingertip access to thousands of helpful questions and solutions provided by ExpressionEngine experts around the world.
 
-_This workflow requires [Alfred 2](http://www.alfredapp.com) and the [Alfred Powerpack](http://www.alfredapp.com/powerpack/)_
+_This workflow requires [Alfred 2](http://www.alfredapp.com) and the [Alfred Powerpack](http://www.alfredapp.com/powerpack/)_.
 
 ## Installation
 
