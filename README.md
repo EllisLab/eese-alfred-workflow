@@ -12,4 +12,4 @@ You can either download / clone this repo or just click on the `eese.alfredworkf
 
 The default trigger is `eese`, so simply type your query following the trigger, e.g. `eese git`.
 
-![](https://github.com/EllisLab/eese-alfred-workflow/blob/images/sample-search.png?raw=true)
+![](https://github.com/EllisLab/eese-alfred-workflow/blob/master/images/sample-search.png?raw=true)
